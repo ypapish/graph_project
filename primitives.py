@@ -38,3 +38,53 @@ def get_vertex_closure(count, size, radius):
       x, y = get_coord(x_center, y_center, length, angle)
       return Vertex(x, y, index)
     return get_vertex
+
+
+def line_connect(canvas, ver1, ver2, arrows=False, shift=False):
+    x1, y1 = ver1.x, ver1.y
+    x2, y2 = ver2.x, ver2.y
+    fi = atan2(y2 - y1, x2 - x1)
+    angle1 = fi
+    angle2 = fi + pi
+    if shift:
+      angle1 -= pi / 8
+      angle2 += pi / 8
+    x3, y3 = get_coord(x1, y1, RADIUS, angle1)
+    x4, y4 = get_coord(x2, y2, RADIUS, angle2)
+    options = {
+      'width': 2,
+      'arrowshape': arrowshape,
+    }
+    if arrows:
+      options['arrow'] = 'last'
+    canvas.create_line(x3, y3, x4, y4, options)
+
+def arc_connect(canvas, ver1, ver2, arrows=False):
+    fi = atan2(ver2.y - ver1.y, ver2.x - ver1.x)
+    x3, y3 = get_coord(ver1.x, ver1.y, RADIUS, fi - pi / 8)
+    x4, y4 = get_coord(ver2.x, ver2.y, RADIUS, fi + pi  + pi / 8)
+    meadle = sqrt((x4 - x3)**2 + (y4 - y3)**2) / 2
+    length = sqrt((2 * RADIUS)**2 + meadle**2)
+    angle = -atan2(2 * RADIUS, meadle)
+    x5, y5 = get_coord(x3, y3, length, angle + fi)
+    options = {
+      'width': 2,
+      'arrowshape': arrowshape,
+      'smooth': True
+    }
+    if arrows:
+      options['arrow'] = 'last'
+    canvas.create_line(x3, y3, x5, y5, x4, y4, options)
+
+
+def loop(canvas, vertex, arrows=False):
+    x, y = vertex.x, vertex.y + RADIUS
+    x1, y1 = get_coord(x, y, RADIUS, 3 * pi / 4 - pi / 2)
+    x2, y2 = get_coord(x, y, RADIUS, -3 * pi / 4 - pi / 2)
+    options = {
+      'width': 2,
+      'arrowshape': arrowshape,
+    }
+    if arrows:
+      options['arrow'] = 'last'
+    canvas.create_line(x, y, x1, y1, x2, y2, x, y, options)
