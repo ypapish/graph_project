@@ -44,20 +44,20 @@ def draw_graph_undirected(canvas, matrix, radius, screen_width):
             line_connect(canvas, vertex, other_vertex)
 
 
-def main(canvas1,type):
+def main(canvas,type):
     directed = generate_matrix(VER_NUM, seed, k)
     undirected = to_undirected(directed)
     if type == 1:
-      draw_graph_directed(canvas1, directed, RADIUS, WIDTH)
+      draw_graph_directed(canvas, directed, RADIUS, WIDTH)
       print('Directed Matrix:')
       print_matrix(directed)
     else:
-      draw_graph_undirected(canvas1, undirected, RADIUS, WIDTH)
+      draw_graph_undirected(canvas, undirected, RADIUS, WIDTH)
       print('Undirected Matrix:')
       print_matrix(undirected)
 
 
 if __name__ == '__main__':
   window, canvas = create_window('Graph visualization', WIDTH, HEIGHT)
-  main(canvas,1)
+  main(canvas, 1)
   window.mainloop()
