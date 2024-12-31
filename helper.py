@@ -29,3 +29,17 @@ def generate_matrix(size, seed, k):
         row.append(val)
       matrix.append(row)
     return matrix
+
+
+def to_undirected(matrix):
+    length = len(matrix)
+    result = []
+    for i in range(length):
+      row = []
+      for j in range(length):
+        if matrix[i][j] or matrix[j][i]:
+          row.append(1)
+        else:
+          row.append(0)
+      result.append(row)
+    return result
