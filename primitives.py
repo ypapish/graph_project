@@ -19,3 +19,9 @@ def draw_vertex(canvas, vertex):
     x, y = vertex.x, vertex.y
     draw_circle(canvas, x, y)
     canvas.create_text(x, y, text=vertex.name, font=5)
+
+
+def get_coord(x, y, dist, angle):
+    x1 = x + dist * cos(angle)
+    y1 = y + dist * sin(angle)
+    return x1, y1
