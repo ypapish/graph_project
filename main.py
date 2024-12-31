@@ -55,3 +55,9 @@ def main(canvas1,type):
       draw_graph_undirected(canvas1, undirected, RADIUS, WIDTH)
       print('Undirected Matrix:')
       print_matrix(undirected)
+
+
+if __name__ == '__main__':
+  window, canvas = create_window('Graph visualization', WIDTH, HEIGHT)
+  main(canvas,1)
+  window.mainloop()
