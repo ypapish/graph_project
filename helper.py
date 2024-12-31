@@ -16,3 +16,16 @@ def print_matrix(matrix):
       for n in row:
         print(n, end = ' ')
       print()
+
+
+def generate_matrix(size, seed, k):
+    random.seed(seed)
+    matrix = []
+    for i in range(size):
+      row = []
+      for j in range(size):
+        rand = random.random() * 2
+        val = math.floor(rand * k)
+        row.append(val)
+      matrix.append(row)
+    return matrix
