@@ -42,3 +42,16 @@ def draw_graph_undirected(canvas, matrix, radius, screen_width):
             arc_connect(canvas, vertex, other_vertex)
           else:
             line_connect(canvas, vertex, other_vertex)
+
+
+def main(canvas1,type):
+    directed = generate_matrix(VER_NUM, seed, k)
+    undirected = to_undirected(directed)
+    if type == 1:
+      draw_graph_directed(canvas1, directed, RADIUS, WIDTH)
+      print('Directed Matrix:')
+      print_matrix(directed)
+    else:
+      draw_graph_undirected(canvas1, undirected, RADIUS, WIDTH)
+      print('Undirected Matrix:')
+      print_matrix(undirected)
