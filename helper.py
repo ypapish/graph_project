@@ -15,7 +15,7 @@ def create_window(title, width, height):
 def print_matrix(matrix):
     for row in matrix:
         for n in row:
-            print(n, end = ' ')
+            print(n, end=' ')
         print()
 
 
