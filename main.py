@@ -34,11 +34,11 @@ def main(canvas,type):
     directed = generate_matrix(VER_NUM, seed, k)
     undirected = to_undirected(directed)
     if type == 1:
-        draw_graph_directed(canvas, directed, RADIUS, WIDTH)
+        draw_graph(canvas, directed, RADIUS, WIDTH, directed=True)
         print('Directed Matrix:')
         print_matrix(directed)
     else:
-        draw_graph_undirected(canvas, undirected, RADIUS, WIDTH)
+        draw_graph(canvas, undirected, RADIUS, WIDTH, directed=False)
         print('Undirected Matrix:')
         print_matrix(undirected)
 
