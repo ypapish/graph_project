@@ -4,9 +4,9 @@ from config import RADIUS, arrowshape
 
 class Vertex:
     def __init__(self, x, y, name):
-      self.x = x
-      self.y = y
-      self.name = name
+        self.x = x
+        self.y = y
+        self.name = name
 
 
 def draw_circle(canvas, x, y):
@@ -31,12 +31,14 @@ def get_vertex_closure(count, size, radius):
     x_center, y_center = size / 2, size / 2
     length = size / 2 - 1.3 * radius
     step = 2 * pi / (count - 1)
+
     def get_vertex(index):
-      if index == 0:
-        return Vertex(size / 2, size / 2, 0)
-      angle = (index - 1) * step
-      x, y = get_coord(x_center, y_center, length, angle)
-      return Vertex(x, y, index)
+        if index == 0:
+            return Vertex(size / 2, size / 2, 0)
+        angle = (index - 1) * step
+        x, y = get_coord(x_center, y_center, length, angle)
+        return Vertex(x, y, index)
+
     return get_vertex
 
 
@@ -47,8 +49,8 @@ def line_connect(canvas, ver1, ver2, arrows=False, shift=False):
     angle1 = fi
     angle2 = fi + pi
     if shift:
-      angle1 -= pi / 8
-      angle2 += pi / 8
+        angle1 -= pi / 8
+        angle2 += pi / 8
     x3, y3 = get_coord(x1, y1, RADIUS, angle1)
     x4, y4 = get_coord(x2, y2, RADIUS, angle2)
     options = {
@@ -56,7 +58,7 @@ def line_connect(canvas, ver1, ver2, arrows=False, shift=False):
       'arrowshape': arrowshape,
     }
     if arrows:
-      options['arrow'] = 'last'
+        options['arrow'] = 'last'
     canvas.create_line(x3, y3, x4, y4, options)
 
 def arc_connect(canvas, ver1, ver2, arrows=False):
@@ -73,7 +75,7 @@ def arc_connect(canvas, ver1, ver2, arrows=False):
       'smooth': True
     }
     if arrows:
-      options['arrow'] = 'last'
+        options['arrow'] = 'last'
     canvas.create_line(x3, y3, x5, y5, x4, y4, options)
 
 
@@ -86,5 +88,5 @@ def loop(canvas, vertex, arrows=False):
       'arrowshape': arrowshape,
     }
     if arrows:
-      options['arrow'] = 'last'
+        options['arrow'] = 'last'
     canvas.create_line(x, y, x1, y1, x2, y2, x, y, options)

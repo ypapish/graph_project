@@ -38,8 +38,8 @@ def to_undirected(matrix):
         row = []
         for j in range(length):
             if matrix[i][j] or matrix[j][i]:
-              row.append(1)
+                row.append(1)
             else:
-              row.append(0)
+                row.append(0)
         result.append(row)
     return result
