@@ -2,6 +2,7 @@ import tkinter as tk
 import random
 import math
 
+
 def create_window(title, width, height):
     window = tk.Tk()
     window.geometry(f'{width}x{height}')
