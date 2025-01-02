@@ -30,7 +30,7 @@ def draw_graph(canvas, matrix, radius, screen_width, directed=False):
                 line_connect(canvas, vertex, other_vertex, directed, shift)
 
 
-def main(canvas,type):
+def main(canvas, type):
     directed = generate_matrix(VER_NUM, seed, k)
     undirected = to_undirected(directed)
     if type == 1:
