@@ -12,7 +12,7 @@ class Vertex:
 def draw_circle(canvas, x, y):
     x1, y1 = x - RADIUS, y - RADIUS
     x2, y2 = x + RADIUS, y + RADIUS
-    canvas.create_oval(x1, y1, x2, y2, width=2,fill="pink",outline="pink")
+    canvas.create_oval(x1, y1, x2, y2, width=2, fill="pink", outline="pink")
 
 
 def draw_vertex(canvas, vertex):
@@ -60,6 +60,7 @@ def line_connect(canvas, ver1, ver2, arrows=False, shift=False):
     if arrows:
         options['arrow'] = 'last'
     canvas.create_line(x3, y3, x4, y4, options)
+
 
 def arc_connect(canvas, ver1, ver2, arrows=False):
     fi = atan2(ver2.y - ver1.y, ver2.x - ver1.x)
