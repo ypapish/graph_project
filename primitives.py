@@ -90,3 +90,4 @@ def loop(canvas, vertex, arrows=False):
     if arrows:
         options['arrow'] = 'last'
     canvas.create_line(x, y, x1, y1, x2, y2, x, y, options)
+    
